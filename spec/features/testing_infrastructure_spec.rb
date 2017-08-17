@@ -12,13 +12,15 @@ require 'launchy'
 
 feature 'feature test' do
 
-  scenario 'checks that homepage says Testing infrastructure working' do
+  before do
     visit '/'
+  end
+
+  scenario 'checks that homepage says Testing infrastructure working' do
     test1
   end
 
   scenario 'expects 2 players to fill in their names' do
-    visit '/'
     fill_in('name1', with: 'Nick')
     fill_in('name2', with: 'Eli')
     find_button('Submit').click
@@ -26,12 +28,13 @@ feature 'feature test' do
     save_and_open_page
   end
 
+
   def test1
     expect(page).to have_content 'Testing infrastructure working!'
   end
 
   def test2
-    expect(page).to have_content "Player 1 is Nick\nPlayer 2 is Eli"
+    expect(page).to have_content "Player 1: Nick\n100\nPlayer 2: Eli\n100"
   end
 
 end
