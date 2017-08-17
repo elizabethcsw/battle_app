@@ -1,12 +1,20 @@
 # my_app.rb
 require 'sinatra/base'
+# require 'socket'
 
 class Battle < Sinatra::Base
 
   get '/' do
-    'Testing infrastructure working!'
+    # socket.puts 'Testing infrastructure working!'
+    erb :index
   end
-  # ... app code here ...
+
+  post "/names" do
+    p params
+    @name = params[:name]
+    erb(:play)
+  end
+
 
   # start the server if ruby file executed directly
   run! if app_file == $0
