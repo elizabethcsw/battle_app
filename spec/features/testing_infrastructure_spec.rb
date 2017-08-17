@@ -25,6 +25,13 @@ feature 'feature test' do
     fill_in('name2', with: 'Eli')
     find_button('Submit').click
     test2
+  end
+
+  scenario 'view hit points of both players' do
+    fill_in('name1', with: 'Nick')
+    fill_in('name2', with: 'Eli')
+    find_button('Submit').click
+    test3
     save_and_open_page
   end
 
@@ -34,7 +41,11 @@ feature 'feature test' do
   end
 
   def test2
-    expect(page).to have_content "Player 1: Nick\n100\nPlayer 2: Eli\n100"
+    expect(page).to have_content "Nick"
+  end
+
+  def test3
+    expect(page).to have_content "Nick: 100HP\nEli: 100HP"
   end
 
 end
