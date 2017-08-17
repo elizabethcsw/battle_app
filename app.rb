@@ -1,5 +1,5 @@
 require 'sinatra/base'
-# require 'player'
+require_relative './lib/player'
 
 class Battle < Sinatra::Base
 
@@ -11,14 +11,18 @@ class Battle < Sinatra::Base
 
   post "/names" do
     p params
-    p session[:player1] = params[:name1]
-    p session[:player2] = params[:name2]
+    # p session[:player1] = params[:name1]
+    $player1 = Player.new(params[:name1])
+    # p session[:player2] = params[:name2]
+    $player2 = Player.new(params[:name2])
     redirect '/play'
   end
 
   get '/play' do
-    @name1 = session[:player1]
-    @name2 = session[:player2]
+    # @name1 = session[:player1]
+    @name1 = $player1.name
+    # @name2 = session[:player2]
+    @name2 = $player2.name
     @player1_hp = 100
     @player2_hp = 100
     session[:player1_hp] = @player1_hp
@@ -28,8 +32,10 @@ class Battle < Sinatra::Base
 
   post "/play" do
     p params
-    @name1 = session[:player1]
-    @name2 = session[:player2]
+    # @name1 = session[:player1]
+    @name1 = $player1.name
+    # @name2 = session[:player2]
+    @name2 = $player2.name
     @player1_hp = session[:player1_hp]
     @player2_hp = session[:player2_hp]
     @player1_hp-=10
@@ -40,8 +46,10 @@ class Battle < Sinatra::Base
 
   post '/play2' do
     p params
-    @name1 = session[:player1]
-    @name2 = session[:player2]
+    # @name1 = session[:player1]
+    @name1 = $player1.name
+    # @name2 = session[:player2]
+    @name2 = $player2.name
     @player1_hp = session[:player1_hp]
     @player2_hp = session[:player2_hp]
     @player2_hp-=10

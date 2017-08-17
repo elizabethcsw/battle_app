@@ -13,7 +13,6 @@ require 'launchy'
 
 feature 'feature test' do
 
-
   scenario "check that homepage says Let's battle" do
     visit '/'
     test1
