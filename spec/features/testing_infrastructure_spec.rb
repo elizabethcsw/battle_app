@@ -1,4 +1,6 @@
 require_relative '../../app.rb'
+require 'capybara-screenshot/rspec'
+require 'launchy'
 
 
 # describe 'testing' do
@@ -21,6 +23,7 @@ feature 'feature test' do
     fill_in('name2', with: 'Eli')
     find_button('Submit').click
     test2
+    save_and_open_page
   end
 
   def test1
