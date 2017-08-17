@@ -1,4 +1,5 @@
 require_relative '../../app.rb'
+require_relative 'web_helpers.rb'
 require 'capybara-screenshot/rspec'
 require 'launchy'
 
@@ -12,25 +13,19 @@ require 'launchy'
 
 feature 'feature test' do
 
-  before do
-    visit '/'
-  end
 
   scenario 'checks that homepage says Testing infrastructure working' do
+    visit '/'
     test1
   end
 
   scenario 'expects 2 players to fill in their names' do
-    fill_in('name1', with: 'Nick')
-    fill_in('name2', with: 'Eli')
-    find_button('Submit').click
+    sign_in_and_play
     test2
   end
 
   scenario 'view hit points of both players' do
-    fill_in('name1', with: 'Nick')
-    fill_in('name2', with: 'Eli')
-    find_button('Submit').click
+    sign_in_and_play
     test3
     save_and_open_page
   end
