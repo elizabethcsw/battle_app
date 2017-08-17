@@ -14,12 +14,12 @@ require 'launchy'
 feature 'feature test' do
 
 
-  scenario 'checks that homepage says Testing infrastructure working' do
+  scenario "check that homepage says Let's battle" do
     visit '/'
     test1
   end
 
-  scenario 'expects 2 players to fill in their names' do
+  scenario 'expect 2 players to fill in their names' do
     sign_in_and_play
     test2
   end
@@ -27,12 +27,18 @@ feature 'feature test' do
   scenario 'view hit points of both players' do
     sign_in_and_play
     test3
-    save_and_open_page
+  end
+
+  scenario 'attack player 1' do
+    sign_in_and_play
+    find_button('Attack Player 1').click
+    test4
+    # save_and_open_page
   end
 
 
   def test1
-    expect(page).to have_content 'Testing infrastructure working!'
+    expect(page).to have_content "Let's battle!"
   end
 
   def test2
@@ -40,7 +46,11 @@ feature 'feature test' do
   end
 
   def test3
-    expect(page).to have_content "Nick: 100HP\nEli: 100HP"
+    expect(page).to have_content "Nick: 100HP\nAttack Nick!\nEli: 100HP\nAttack Eli!"
+  end
+
+  def test4
+    expect(page).to have_content "Nick: 90HP\nAttack Nick!\nEli: 100HP\nAttack Eli!"
   end
 
 end

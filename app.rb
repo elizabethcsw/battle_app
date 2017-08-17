@@ -1,6 +1,5 @@
-# my_app.rb
 require 'sinatra/base'
-# require 'socket'
+# require 'player'
 
 class Battle < Sinatra::Base
 
@@ -15,7 +14,6 @@ class Battle < Sinatra::Base
     p session[:player1] = params[:name1]
     p session[:player2] = params[:name2]
     redirect '/play'
-    # save_and_open_page
   end
 
   get '/play' do
@@ -35,6 +33,18 @@ class Battle < Sinatra::Base
     @player1_hp = session[:player1_hp]
     @player2_hp = session[:player2_hp]
     @player1_hp-=10
+    session[:player1_hp] = @player1_hp
+    session[:player2_hp] = @player2_hp
+    erb :play
+  end
+
+  post '/play2' do
+    p params
+    @name1 = session[:player1]
+    @name2 = session[:player2]
+    @player1_hp = session[:player1_hp]
+    @player2_hp = session[:player2_hp]
+    @player2_hp-=10
     session[:player1_hp] = @player1_hp
     session[:player2_hp] = @player2_hp
     erb :play
