@@ -15,9 +15,10 @@ feature 'feature test' do
     test1
   end
 
-  scenario 'expects players to fill in their name' do
+  scenario 'expects 2 players to fill in their names' do
     visit '/'
-    fill_in('name', with: 'Nick')
+    fill_in('name1', with: 'Nick')
+    fill_in('name2', with: 'Eli')
     find_button('Submit').click
     test2
   end
@@ -27,7 +28,7 @@ feature 'feature test' do
   end
 
   def test2
-    expect(page).to have_content 'His name is Nick'
+    expect(page).to have_content "Player 1 is Nick\nPlayer 2 is Eli"
   end
 
 end
