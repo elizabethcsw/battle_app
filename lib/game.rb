@@ -1,18 +1,13 @@
-#Model
+# Model
 class Game
-  attr_reader :hp
+  attr_reader :player1, :player2
 
-  DEFAULT_HP = 100
-
-  def initialize(hp = DEFAULT_HP)
-    @hp = hp
+  def initialize(player1, player2)
+    @player1 = player1
+    @player2 = player2
   end
 
   def attack(player)
-    player.game.attacked
-  end
-
-  def attacked
-    @hp -= 10
+    player.attacked
   end
 end

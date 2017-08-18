@@ -3,13 +3,6 @@ require_relative 'web_helpers.rb'
 require 'capybara-screenshot/rspec'
 require 'launchy'
 
-# describe 'testing' do
-#   it 'checks that homepage says Testing infrastructure working' do
-#     visit '/'
-#     expect(page).to have_content 'Testing infrastructure working!'
-#   end
-# end
-
 feature 'Attack' do
   scenario 'reduce Player 1 HP by 10' do
     sign_in_and_play
@@ -17,7 +10,7 @@ feature 'Attack' do
     test1
   end
 
-  scenario 'reduce Player 1 HP by 10' do
+  scenario 'reduce Player 2 HP by 10' do
     sign_in_and_play
     # find_button('Attack Player 1').click
     click_button 'Attack!'

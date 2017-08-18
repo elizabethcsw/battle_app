@@ -3,13 +3,6 @@ require_relative 'web_helpers.rb'
 require 'capybara-screenshot/rspec'
 require 'launchy'
 
-# describe 'testing' do
-#   it 'checks that homepage says Testing infrastructure working' do
-#     visit '/'
-#     expect(page).to have_content 'Testing infrastructure working!'
-#   end
-# end
-
 feature 'feature test' do
   scenario "check that homepage says Let's battle" do
     visit '/'
@@ -59,3 +52,11 @@ feature 'feature test' do
     expect(page).to have_content "Nick: 90HP\nAttack Nick!\nEli: 100HP\nAttack Eli!"
   end
 end
+
+
+# describe 'testing' do
+#   it 'checks that homepage says Testing infrastructure working' do
+#     visit '/'
+#     expect(page).to have_content 'Testing infrastructure working!'
+#   end
+# end

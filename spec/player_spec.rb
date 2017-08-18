@@ -9,6 +9,12 @@ describe Player do
     end
   end
 
+  describe '#attacked' do
+    it 'reduces hp by 10 when being attacked' do
+      expect { subject.attacked }.to change { subject.hp }.by(-10)
+    end
+  end
+
   # describe '#attack' do
   #   let (:player2) { double(:player2) }
   #
