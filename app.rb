@@ -1,5 +1,6 @@
 require 'sinatra/base'
 require_relative './lib/player'
+require_relative './lib/game'
 
 class Battle < Sinatra::Base
   # enable :sessions
@@ -25,7 +26,8 @@ class Battle < Sinatra::Base
     p 'get request of /attack'
     @player1 = $player1
     @player2 = $player2
-    @player2.attack(@player1)
+    # @player2.game.attack(@player1)
+    Game.new.attack(@player1)
     erb :play
   end
 
@@ -33,7 +35,8 @@ class Battle < Sinatra::Base
     p 'post request of /attack2'
     @player1 = $player1
     @player2 = $player2
-    @player1.attack(@player2)
+    # @player1.game.attack(@player2)
+    Game.new.attack(@player2)
     erb :play
   end
 

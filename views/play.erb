@@ -1,5 +1,5 @@
 
-<h1><%= @player1.name %>: <%= @player1.hp %>HP</h1>
+<h1><%= @player1.name %>: <%= @player1.game.hp %>HP</h1>
 
 <a href="/attack" class="btn">Attack <%= @player1.name %>!</a>
 
@@ -10,7 +10,7 @@
 
 
 
-<h1><%= @player2.name %>: <%= @player2.hp %>HP</h1>
+<h1><%= @player2.name %>: <%= @player2.game.hp %>HP</h1>
 
 <form action="/attack2" method='post'>
   <label for="name">Attack <%= @player2.name %>!</label>
