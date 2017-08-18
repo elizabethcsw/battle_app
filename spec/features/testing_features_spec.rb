@@ -3,7 +3,6 @@ require_relative 'web_helpers.rb'
 require 'capybara-screenshot/rspec'
 require 'launchy'
 
-
 # describe 'testing' do
 #   it 'checks that homepage says Testing infrastructure working' do
 #     visit '/'
@@ -12,7 +11,6 @@ require 'launchy'
 # end
 
 feature 'feature test' do
-
   scenario "check that homepage says Let's battle" do
     visit '/'
     test1
@@ -28,20 +26,25 @@ feature 'feature test' do
     test3
   end
 
-  scenario 'attack player 1' do
+  scenario 'attack player 2' do
     sign_in_and_play
-    find_button('Attack Player 1').click
+    find_button('Attack').click
     test4
-    # save_and_open_page
   end
 
+  scenario 'attack player 1' do
+    sign_in_and_play
+    find_link('Attack Nick!').click
+    test5
+    # save_and_open_page
+  end
 
   def test1
     expect(page).to have_content "Let's battle!"
   end
 
   def test2
-    expect(page).to have_content "Nick"
+    expect(page).to have_content 'Nick:'
   end
 
   def test3
@@ -49,15 +52,10 @@ feature 'feature test' do
   end
 
   def test4
-    expect(page).to have_content "Nick: 90HP\nAttack Nick!\nEli: 100HP\nAttack Eli!"
+    expect(page).to have_content "Nick: 100HP\nAttack Nick!\nEli: 90HP\nAttack Eli!"
   end
 
+  def test5
+    expect(page).to have_content "Nick: 90HP\nAttack Nick!\nEli: 100HP\nAttack Eli!"
+  end
 end
-
-
-
-
-
-# #  In spec/features, add a new Capybara feature test
-# that expects players to fill in their names (in a form),
-# submit that form, and see those names on-screen

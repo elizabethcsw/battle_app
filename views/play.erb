@@ -1,16 +1,18 @@
 
-<h1><%= @name1 %>: <%= @player1_hp %>HP</h1>
+<h1><%= @player1.name %>: <%= @player1.hp %>HP</h1>
 
-<form action="/play" method='post'>
+<a href="/attack" class="btn">Attack <%= @player1.name %>!</a>
+
+<!-- <form action="/play" method='post'>
   <label for="name">Attack <%= @name1 %>!</label>
   <input type="submit" value="Attack Player 1">
-</form>
+</form> -->
 
-<!-- <a href="/play" class="btn">Attack</a> -->
 
-<h1><%= @name2 %>: <%= @player2_hp %>HP</h1>
 
-<form action="/play2" method='post'>
-  <label for="name">Attack <%= @name2 %>!</label>
-  <input type="submit" value="Attack Player 2">
+<h1><%= @player2.name %>: <%= @player2.hp %>HP</h1>
+
+<form action="/attack2" method='post'>
+  <label for="name">Attack <%= @player2.name %>!</label>
+  <input type="submit" value="Attack!">
 </form>
